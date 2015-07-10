@@ -1,0 +1,74 @@
+[lang^="ar"], [lang="ota"] {
+    direction:rtl;
+	/* text-align:right;*/
+    /*font-family:"Scheherazade", "Lateef", Sans-Serif, Serif;*/
+   	/* font-weight:normal;*/
+    }
+[lang="en"], [lang="fr"], [lang="ar-Latn-x-ijmes"] {
+    direction:ltr;
+    }    
+body {
+        margin:2em;
+        text-align:justify;
+        }
+a.anchor {
+        font-size:0.6em;
+        vertical-align:top;
+        padding:0.3em;
+        display:inline;
+        }
+#body {
+        min-width:400px;
+        max-width:600px;
+        float: right;
+        clear:both;
+        padding-bottom: 2em;
+        padding-left: 2em;
+}
+#front {
+        min-width:400px;
+        max-width:600px;
+        float:right;
+        padding-bottom: 2em;
+}
+#back {
+        min-width:200px;
+        max-width:400px;
+        float:right;
+}
+
+#notes:before {
+    content: "ملاحظات";
+    direction:rtl;
+    display:block;
+    border-bottom:gray solid 1px;
+    }
+#apparatus:before {
+    content: "شرح";
+    direction:rtl;
+    display:block;
+    border-bottom:gray solid 1px;
+    }
+h1 {
+    text-align:center;
+    font-size:2em;
+    font-weight:bold;
+}
+
+h1, h2 {
+    border-bottom:gray solid 1px;
+    }
+p.note {
+    display:block;
+}
+
+p.note span {
+    display:inline;
+}
+/* add quotation marks before the mentioned content */
+ span.tei-mentioned:before {
+    content: '"';
+}
+span.tei-mentioned:after {
+    content: '"';
+} 
