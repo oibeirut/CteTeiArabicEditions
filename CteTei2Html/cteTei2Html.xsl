@@ -40,7 +40,8 @@
         <html>
             <head>
                 <link rel="stylesheet" type="text/css" href="{substring-before(base-uri(),'.xml')}_cte_rendition-styles.css"/>
-                <link rel="stylesheet" type="text/css" href="cte_main-styles.css"/>
+                <!-- link to the stylesheet hostet on GitHub -->
+                <link rel="stylesheet" type="text/css" href="https://rawgit.com/tillgrallert/CteTeiArabicEditions/master/CteTei2Html/cte_main-styles.css"/>
                 <title><xsl:value-of select="ancestor::tei:TEI//tei:fileDesc/tei:titleStmt/tei:title"/></title>
             </head>
             <body>
