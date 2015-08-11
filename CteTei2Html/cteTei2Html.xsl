@@ -9,7 +9,10 @@
     
     <xsl:output method="text" name="text"/>
     <xsl:output encoding="UTF-8" indent="yes" method="html" omit-xml-declaration="yes" name="html"/>
-    <xsl:include href="../Functions/BachFunctions v3.xsl"/>
+    
+    <!-- strings for translating IJMES transcription into Arabic letters this is used for generating Arabic numerals for footnotes -->
+    <xsl:variable name="vStringTranscribeFromIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
+    <xsl:variable name="vStringTranscribeToArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
    
     <xsl:template match="tei:TEI">
