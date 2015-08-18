@@ -19,6 +19,7 @@
             <xsl:value-of select="substring(.,1,1)"/>
         </xsl:for-each>
     </xsl:variable>
+    <!-- documenting the changes -->
     <xsl:variable name="vChange">
         <xsl:element name="change">
             <xsl:attribute name="when" select="$vDateCurrentIso"/>
@@ -28,6 +29,9 @@
             <xsl:text>".</xsl:text>
         </xsl:element>
     </xsl:variable>
+    <!-- strings for translating IJMES transcription into Arabic letters this is used for generating Arabic numerals for footnotes -->
+    <xsl:variable name="vStringTranscribeIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
+    <xsl:variable name="vStringTranscribeArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
     
     <!-- copy all -->
@@ -79,6 +83,19 @@
             <xsl:copy-of select="$vChange"/>
             <xsl:apply-templates select="@* |node()"/>
         </xsl:copy>
+    </xsl:template>
+    
+    <!-- translate milestones to lb -->
+    <xsl:template match="milestone[@unit='line']">
+        <xsl:element name="lb">
+            <xsl:attribute name="n" select="translate(@n,$vStringTranscribeArabic,$vStringTranscribeIjmes)"/>
+        </xsl:element>
+    </xsl:template>
+    <!-- translate milestones to pb -->
+    <xsl:template match="milestone[@unit='page']">
+        <xsl:element name="pb">
+            <xsl:attribute name="n" select="translate(@n,$vStringTranscribeArabic,$vStringTranscribeIjmes)"/>
+        </xsl:element>
     </xsl:template>
     
     <!-- remove <hi> tags without rendering information -->
