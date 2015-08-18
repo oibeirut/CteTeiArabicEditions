@@ -34,7 +34,7 @@
     <xsl:variable name="vStringTranscribeArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
     
-    <!-- copy all -->
+    <!-- copy everything -->
     <xsl:template match="@* | node()">
         <xsl:copy>
             <xsl:apply-templates select="@* |node()"/>
