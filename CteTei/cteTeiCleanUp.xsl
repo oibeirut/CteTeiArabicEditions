@@ -41,6 +41,24 @@
         </xsl:copy>
     </xsl:template>
     
+    <!--<xsl:param name="n" select="12"/>
+    
+    <xsl:template match="node()"/>
+    
+    <xsl:template match="
+        *[descendant-or-self::pb/@n=$n] |
+        node()[preceding::pb/@n=$n]
+        ">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+    
+
+    <xsl:template match="node()[preceding::pb/@n &gt; $n]" priority="2"/>
+    -->
+    
     <!-- milestone for chapters to div type='capter' -->
     <xsl:template match="milestone[@unit='chapter']">
         <xsl:element name="div">
