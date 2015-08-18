@@ -33,6 +33,24 @@
     <xsl:variable name="vStringTranscribeIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
     <xsl:variable name="vStringTranscribeArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
+    <!-- dealing with the absence of divs in the CTE output -->
+    <xsl:template match="body">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="descendant::milestone[@unit='chapter']"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- milestone for chapters to div type='capter' -->
+    <xsl:template match="milestone[@unit='chapter']">
+        <xsl:element name="div">
+            <xsl:attribute name="type" select="'chapter'"/>
+            <xsl:apply-templates select="following::node() >> milestone[@unit='chapter']"/>
+            
+        </xsl:element>
+    </xsl:template>
+    
+    
     <!-- copy everything -->
     <xsl:template match="@* | node()">
         <xsl:copy>
