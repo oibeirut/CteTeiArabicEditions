@@ -33,7 +33,6 @@
     <xsl:variable name="vStringTranscribeIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
     <xsl:variable name="vStringTranscribeArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
-    
     <!-- copy everything -->
     <xsl:template match="@* | node()">
         <xsl:copy>
