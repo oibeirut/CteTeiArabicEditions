@@ -11,17 +11,17 @@
     <xsl:output encoding="UTF-8" indent="yes" method="html" omit-xml-declaration="yes" name="html"/>
     
     <!-- strings for translating IJMES transcription into Arabic letters this is used for generating Arabic numerals for footnotes -->
-    <xsl:variable name="vStringTranscribeFromIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
-    <xsl:variable name="vStringTranscribeToArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
+    <xsl:variable name="vStringTranscribeIjmes" select="'btḥḫjdrzsṣḍṭẓʿfqklmnhāūīwy0123456789'"/>
+    <xsl:variable name="vStringTranscribeArabic" select="'بتحخجدرزسصضطظعفقكلمنهاويوي٠١٢٣٤٥٦٧٨٩'"/>
     
    
     <xsl:template match="tei:TEI">
         <!-- generate CSS based on the <rendition> nodes in the <teiHeader> -->
-        <xsl:result-document href="{substring-before(base-uri(),'.xml')}_cte_rendition-styles.css" format="text">
+        <xsl:result-document href="{substring-before(base-uri(),'.')}_cte_rendition-styles.css" format="text">
             <xsl:apply-templates select=".//tei:rendition" mode="mCss"/>
         </xsl:result-document>
         <!-- generate an HTML view -->
-        <xsl:result-document href="{substring-before(base-uri(),'.xml')}.html" format="html">
+        <xsl:result-document href="{substring-before(base-uri(),'.')}.html" format="html">
             <xsl:apply-templates select=".//tei:text" mode="mHtml"/>
         </xsl:result-document>
     </xsl:template>
@@ -164,14 +164,14 @@
             <xsl:choose>
                 <xsl:when test="@type='n1'">
                     <xsl:text>م</xsl:text>
-                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='n1']) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='n1']) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                 </xsl:when>
                 <xsl:when test="@type='a1'">
                     <xsl:text>ش</xsl:text>
-                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='a1']) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='a1']) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text]) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                    <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text]) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                 </xsl:otherwise>
             </xsl:choose>
         </a>
@@ -193,14 +193,14 @@
                 <xsl:choose>
                     <xsl:when test="@type='n1'">
                         <xsl:text>م</xsl:text>
-                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='n1']) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='n1']) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                     </xsl:when>
                     <xsl:when test="@type='a1'">
                         <xsl:text>ش</xsl:text>
-                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='a1']) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text][@type='a1']) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text]) +1),$vStringTranscribeFromIjmes,$vStringTranscribeToArabic)"/>
+                        <xsl:value-of select=" translate(string(count(preceding::tei:note[ancestor::tei:text]) +1),$vStringTranscribeIjmes,$vStringTranscribeArabic)"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </a>
