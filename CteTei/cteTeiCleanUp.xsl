@@ -41,10 +41,10 @@
     </xsl:template>
     
     <!-- save as new file -->
-    <xsl:template match="TEI">
-        <xsl:result-document href="{substring-before(base-uri(),'.')}-clean-{format-date(current-date(),'[Y0001][M01][D01]')}.TEIP5.xml">
+    <xsl:template match="/">
+        <xsl:result-document href="{substring-before(base-uri(),'.')}-clean-{format-date(current-date(),'[Y0001][M01][D01]')}.TEIP5.xml" method="xml">
             <xsl:copy>
-                <xsl:apply-templates select="@* |node()"/>
+                <xsl:apply-templates/>
             </xsl:copy>
         </xsl:result-document>
     </xsl:template>
@@ -143,7 +143,7 @@
         <!-- provide an empty anchor such as <ref> -->
         <xsl:copy>
             <xsl:attribute name="xml:id" select="concat('note_',generate-id())"/>
-            <!-- point to the preceding <seg> -->
+            <!-- point to the preceding <seg>. This was particular to the TEI export I got from the OIB diwan edition -->
             <xsl:attribute name="target" select="concat('#',preceding-sibling::seg[1]/@xml:id)"/>
             <xsl:apply-templates select="@*"/>
             <!--<xsl:element name="ref">
